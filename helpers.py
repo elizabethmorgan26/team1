@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 def get_dataset_range(start_year, end_year):
     if int(start_year) < 2008:
@@ -24,20 +25,49 @@ def get_dataset_range(start_year, end_year):
 # =============================================
 # change a string into a float; account for magnitude of
 # the number as represented in the string
-def retype_damage_value(value_str):
-    if (value_str == float('nan')):
-        return value_str
-    magnitude = value_str[-1]
-    num = float(value_str[0:-2])
-    if magnitude == 'K':
-        num = num * 1000
-    elif magnitude == 'M':
-        num = num * 1000000
-    elif magnitude == 'B':
-        num = num * 1000000000
-    else:
-        num = float(value_str)
-    return num
+def retype_damage_value(value):
+    if pd.isna(value):
+        return np.nan
+
+    try:
+        if isinstance(value, (int, float)):
+            return float(value)
+
+        value_str = str(value)
+        if not value_str:
+            return np.nan
+
+        num_str = value[:-1]
+        magnitude = value[-1]
+
+        num = float(num_str)
+        
+        if magnitude == 'K':
+            num *= 1000
+        elif magnitude == 'M':
+            num *= 1000000
+        elif magnitude == 'B':
+            num *= 1000000000
+    
+        return num
+    except (ValueError, IndexError):
+        return np.nan
+    
+# ============================================
+def retype_tornado_scale(tornado_scale):
+    if pd.isna(tornado_scale):
+        return np.nan
+    
+    scale_dict = {
+        "F0": 0, "EF0": 0,
+        "F1": 1, "EF1": 1,
+        "F2": 2, "EF2": 2,
+        "F3": 3, "EF3": 3,
+        "F4": 4, "EF4": 4,
+        "F5": 5, "EF5": 5,
+        "FU": -1, "EFU": -1
+    }
+    return scale_dict[tornado_scale]
 
 # ============================================
 
