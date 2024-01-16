@@ -2,11 +2,6 @@ import pandas as pd
 import numpy as np
 
 def get_dataset_range(start_year, end_year):
-    if int(start_year) < 2008:
-        print("USER ERROR: START YEAR TOO LOW")
-    elif int(end_year) > 2022:
-        print("USER ERROR: END YEAR TOO HIGH")
-    # datasets = []
     datasets = {}
     for i in range(int(start_year), int(end_year)+1):
         data = pd.read_csv(f"resources/stormevents_{i}.csv")
