@@ -78,3 +78,35 @@ def retype_damage_col(data):
 # example usage: sets = get_dataset_range(2020, 2021)
 #                for year in sets.keys():
 #                   sets[year] = retype_damage_col(sets[year])
+    
+# ============================================
+    
+def clean_storm_df(dataFrame, narrow_columns):
+    narrow_df = dataFrame[narrow_columns] # reduce columns to relevant ones
+    
+    # translate tornado F scale into simple integer scale
+    narrow_df['TOR_F_SCALE'] = narrow_df['TOR_F_SCALE'].apply(retype_tornado_scale)
+
+    # fill missing values for damage columns
+    narrow_df["DAMAGE_PROPERTY"] = narrow_df["DAMAGE_PROPERTY"].fillna("0.00K")
+    narrow_df["DAMAGE_CROPS"] = narrow_df["DAMAGE_CROPS"].fillna("0.00K")
+
+    # re-type damage values to float to support math operations
+    narrow_df['DAMAGE_PROPERTY'] = narrow_df['DAMAGE_PROPERTY'].apply(retype_damage_value)
+    narrow_df['DAMAGE_CROPS'] = narrow_df['DAMAGE_CROPS'].apply(retype_damage_value)
+
+    # merge deaths/injuries/damages columns
+    narrow_df["TOTAL DEATHS"] = narrow_df["DEATHS_DIRECT"] + narrow_df["DEATHS_INDIRECT"]
+    narrow_df["TOTAL INJURIES"] = narrow_df["INJURIES_DIRECT"] + narrow_df["INJURIES_INDIRECT"]
+    narrow_df["TOTAL DAMAGES"] = narrow_df["DAMAGE_PROPERTY"] + narrow_df["DAMAGE_CROPS"]
+
+    # remove now extraneous columns; damages columns remain as we perform individual analyses
+    narrow_df = narrow_df.drop(columns=["INJURIES_DIRECT", "INJURIES_INDIRECT","DEATHS_DIRECT", "DEATHS_INDIRECT"])
+
+    # Narrow down events that have had at least one death and/or at least one injury 
+    narrow_df = narrow_df.loc[(narrow_df["TOTAL DEATHS"] > 1) | (narrow_df["TOTAL INJURIES"] > 1)]
+
+    # reset the index 
+    narrow_df.reset_index(drop=True, inplace=True)
+
+    return narrow_df
