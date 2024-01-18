@@ -25,7 +25,7 @@ In general, you can replicate our work by running our Jupyter notebook files and
 - You can view some data exploration and the cleaning process by opening this file: Storm_Analysis.ipynb. This is the primary dataset that authors worked on to answer their research questions.
 - Research question one was explored by Kevin, Mandy and David. 
     - What has been the impact of storms over recent years?
-        - Kevin explored and analyzed data on the most recent 15 years. He also investigated the types of storms with greatest impact over this time period. The analysis file can be found here: 2008-2022_Analysis_Overview.ipynb
+        - Kevin explored and analyzed data on the most recent 15 years. He also investigated the types of storms with greatest impact over this time period. The analysis file can be found here: 2008-2022_Aggregate-Analysis
         - Mandy explored the top 5 deadliest storms in the most recent 15 years. She analyzed the relationship between total deaths and total cost of damage for storms over this time period. The analysis file can be found in the main branch here: 2008-2022 Storm Analysis.ipynb
         - David explored the differences in storm impacts between the most recent 15 years and the initial 15 years. Specifically, he compared the occurrences of storms by type as well as total deaths for these time periods. The analysis files can be found here: “1950-1964_df.ipynb” and "bar_and_line.ipynb"
         - Note: running “1950-1964_df.ipynb” requires moving the all CSV files in "Resources" to the folder there containing that year. For example, you must move all data from 1950 to 1964 to the folder "1950-1964", and the same for recent years. Once finished, move the CSV files back out to the "Resources" folder.
