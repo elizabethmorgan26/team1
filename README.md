@@ -21,7 +21,7 @@ The dataset includes detailed information regarding major storm events in the Un
 * Data source (trained spotter, public, emergency manager, law enforcement, etc.)
 
 # Repository Contents
-In general, you can replicate our work by running our Jupyter notebook files and observing the results. Not all notebooks were used in our final presentation or analysis, but were included to preserve the full efforts of our team. Below are the files important to our final presentation and any special steps required to run them.
+In general, you can replicate our work by running our Jupyter notebook files and observing the results. Not all notebooks were used in our final presentation or analysis (i.e Explorator_Analysis folder contains exploratory findings not used in final product), but were included to preserve the full efforts of our team. Below are the files important to our final presentation and any special steps required to run them.
 - You can view some data exploration and the cleaning process by opening this file: Storm_Analysis.ipynb. This is the primary dataset that authors worked on to answer their research questions.
 - Research question one was explored by Kevin, Mandy and David. 
     - What has been the impact of storms over recent years?
