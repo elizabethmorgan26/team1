@@ -22,7 +22,7 @@ The dataset includes detailed information regarding major storm events in the Un
 
 # Repository Contents
 In general, you can replicate our work by running our Jupyter notebook files and observing the results. Not all notebooks were used in our final presentation or analysis (i.e Explorator_Analysis folder contains exploratory findings not used in final product), but were included to preserve the full efforts of our team. Below are the files important to our final presentation and any special steps required to run them.
-- You can view some data exploration and the cleaning process by opening this file: Storm_Analysis.ipynb. This is the primary dataset that authors worked on to answer their research questions.
+- You can view some data exploration and the cleaning process by opening this file: Storm_Analysis.ipynb. This is the primary dataset that authors worked on to answer their research questions. The cleaned dataset from the cleaning process of this notebook can be found in the Cleaned_data folder within the Resouces folder of the repository. 
 - Research question one was explored by Kevin, Mandy and David. 
     - What has been the impact of storms over recent years?
         - Kevin explored and analyzed data on the most recent 15 years. He also investigated the types of storms with greatest impact over this time period. The analysis file can be found here: 2008-2022_Aggregate-Analysis
